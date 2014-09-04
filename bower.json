@@ -1,0 +1,14 @@
+{
+  "name": "Friendlysbox",
+  "description": "My main website",
+  "version": "0.0.0",
+  "homepage": "http://friendlysbox.com",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "jquery": "1.10.2",
+    "bootstrap": "~3.1.1"
+  }
+}
