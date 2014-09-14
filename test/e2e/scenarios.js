@@ -25,7 +25,7 @@ describe('Photo Album App', function() {
 		});
 
 		it('should filter the album by the year I select', function () {			
-			var albumListNameColumn = element.all(by.repeater('album in photoAlbums')).column('{{album.name}}');
+			var albumListNameColumn = element.all(by.repeater('album in photoAlbums').column('{{album.name}}'));
 
 			function getNames() {
 				return albumListNameColumn.map(function(elm) {
@@ -41,7 +41,27 @@ describe('Photo Album App', function() {
 
 		});
 
+		it('should order the year column by the year', function () {			
+			var albumListNameColumn = element.all(by.repeater('album1 in photoAlbums').column('{{album1.year}}'));
 
+			function getNames() {
+				return albumListNameColumn.map(function(elm) {
+					return elm.getText();
+				});
+			}
+
+			expect(getNames()).toEqual([
+				'2013', '2012', '2009'
+			]);
+
+			element(by.css('#year')).click();
+			
+			expect(getNames()).toEqual([
+				'2009', '2012', '2013'
+			]);
+
+		});
+		
 	});
 
 });
