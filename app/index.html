@@ -53,14 +53,14 @@
 							Name <span ng-class="nameArrowClass"></span>
 						</th>
 						<th class="col-md-6">Description</th>
-						<th ng-click="reverse = defaultOrder == 'year' && !reverse; defaultOrder = 'year'; showArrow();" class="col-md-2 showMouseHover">
+						<th id="year" ng-click="reverse = defaultOrder == 'year' && !reverse; defaultOrder = 'year'; showArrow();" class="col-md-2 showMouseHover">
 							Year <span ng-class="yearArrowClass"></span>
 						</th>
 					</tr>
-					<tr ng-repeat="album in photoAlbums | orderBy: defaultOrder : reverse">
-						<td>{{album.name}}</td>
-						<td>{{album.desc}}</td>
-						<td>{{album.year}}</td>
+					<tr ng-repeat="album1 in photoAlbums | orderBy: defaultOrder : reverse">
+						<td>{{album1.name}}</td>
+						<td>{{album1.desc}}</td>
+						<td>{{album1.year}}</td>
 					</tr>
 				</table>
 			</div>

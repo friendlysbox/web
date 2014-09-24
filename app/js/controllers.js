@@ -3,29 +3,15 @@
 /* Controllers */
 var photoAlbumControllers = angular.module('photoAlbumControllers', []);
 
-photoAlbumControllers.controller('PhotoAlbumList', function ($scope) {
-	$scope.photoAlbums = [
-		{
-			'name': 'Greece, Rhodes',
-			'desc': 'Our greek holiday in Rhodes',
-			'year': 2013
-		},
-		{
-			'name': 'Italy, Venice',
-			'desc': 'My first holiday to Italy',
-			'year': 2009
-		},
-		{
-			'name': 'Leeds Castle',
-			'desc': 'Our first holiday to Leeds Castle',
-			'year': 2012
-		}
-	];
+photoAlbumControllers.controller('PhotoAlbumList', ['$scope', '$http', function ($scope, $http) {
+	$http.get('photoAlbums/photoAlbums.json').success(function(data){
+		$scope.photoAlbums = data;
+	});
 
 	$scope.defaultOrder = 'year';
 	$scope.reverse = true;
 	$scope.nameArrowClass = "";
-	$scope.yearArrowClass = "glyphicon glyphicon-arrow-down";
+	$scope.yearArrowClass = "glyphicon glyphicon-arrow-up";
 
 	$scope.showArrow = function() {
 		if($scope.defaultOrder == 'year') {
@@ -45,5 +31,5 @@ photoAlbumControllers.controller('PhotoAlbumList', function ($scope) {
 		}
 	}
 	
-});
+}]);
 
