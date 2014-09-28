@@ -1,0 +1,22 @@
+<div class="container-fuild">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-2">{{class1}}
+			<table class="table table-striped">
+				<tr>
+					<th ng-click="reverse = defaultOrder == 'name' && !reverse; defaultOrder = 'name'; showArrow();" class="col-md-4 showMouseHover">
+						Name <span ng-class="nameArrowClass"></span>
+					</th>
+					<th class="col-md-6">Description</th>
+					<th id="year" ng-click="reverse = defaultOrder == 'year' && !reverse; defaultOrder = 'year'; showArrow();" class="col-md-2 showMouseHover">
+						Year <span ng-class="yearArrowClass"></span>
+					</th>
+				</tr>
+				<tr ng-repeat="album1 in photoAlbums | orderBy: defaultOrder : reverse">
+					<td>{{album1.name}}</td>
+					<td>{{album1.desc}}</td>
+					<td>{{album1.year}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

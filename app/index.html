@@ -10,62 +10,44 @@
 			margin-top: 2em;
 			margin-bottom: 2em;
 		}
-
 		.showMouseHover:hover  {
 			cursor: pointer;
 		}
+		.filter {
+			padding: 0;
+		}
+		.filter li {
+			list-style: none;
+			padding: 0.5em;
+		}
 	</style>
 	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/filters.js"></script>
 </head>
-<body ng-controller="PhotoAlbumList">
-
-	<div class="container-fuild">
-		<div class="row spacer">
-			<div class="col-md-2">
-				Search: <input type="text" ng-model="query">
-				Year: 
-				<select ng-model="cboYear">
-					<option value="">All</option>
-					<option value="2009">2009</option>
-					<option value="2012">2012</option>
-					<option value="2013">2013</option>
-				</select>
-			</div>
-
-			<div class="col-md-10">
-				<ul>
-					<li ng-repeat="album in photoAlbums | filter: query | filter: {year:cboYear} | orderBy: '-year' | MyUppercase">
-						<h3>{{album.name}}</h3>
-						<p>{{album.year}} - {{album.desc}}</p>
-					</li>
-				</ul>
-			</div>
+<body>
+	<nav ng-controller="NavController" class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/app">Friendly's box</a>
 		</div>
-
-		<div class="row spacer">
-			<div class="col-md-6 col-md-offset-2">{{class1}}
-				<table class="table table-striped">
-					<tr>
-						<th ng-click="reverse = defaultOrder == 'name' && !reverse; defaultOrder = 'name'; showArrow();" class="col-md-4 showMouseHover">
-							Name <span ng-class="nameArrowClass"></span>
-						</th>
-						<th class="col-md-6">Description</th>
-						<th id="year" ng-click="reverse = defaultOrder == 'year' && !reverse; defaultOrder = 'year'; showArrow();" class="col-md-2 showMouseHover">
-							Year <span ng-class="yearArrowClass"></span>
-						</th>
-					</tr>
-					<tr ng-repeat="album1 in photoAlbums | orderBy: defaultOrder : reverse">
-						<td>{{album1.name}}</td>
-						<td>{{album1.desc}}</td>
-						<td>{{album1.year}}</td>
-					</tr>
-				</table>
-			</div>
+		<div class="container">
+			<ul class="nav navbar-nav">
+				<li ng-class="{ active: isActive('/photoalbumfilter')}">
+					<a href="#/photoalbumfilter">Photo Album list with filter</a>
+				</li>
+				<li ng-class="{ active: isActive('/photoalbumtable')}">
+					<a href="#/photoalbumtable">Photo Album in table</a>
+				</li>
+				<li ng-class="{ active: isActive('/directiveexample')}">
+					<a href="#/directiveexample">Example Directive</a>
+				</li>
+			</ul>
 		</div>
-	</div>
+	</nav>
+
+	<div ng-view></div>
 
 </body>
 </html>

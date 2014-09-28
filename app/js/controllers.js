@@ -33,3 +33,8 @@ photoAlbumControllers.controller('PhotoAlbumList', ['$scope', '$http', function 
 	
 }]);
 
+photoAlbumControllers.controller('NavController', ['$scope', '$location', function ($scope, $location) {
+	$scope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+    };
+}]);
