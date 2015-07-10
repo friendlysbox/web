@@ -1,10 +1,25 @@
-.intro {
+/*.intro {
     background: url(../img/mountainbackground.png) no-repeat top center fixed;
     -webkit-background-size: 2216px 736px;
     -moz-background-size: 2216px 736px;
     -o-background-size: 2216px 736px;
     background-size: 2216px 736px;
     height: 736px;
+}*/
+.intro {
+    height: 736px;
+    background: none;
+}
+
+.intro-img {
+    position: absolute;
+    width: 2216px;
+    height: 736px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    opacity: 0;
 }
 
 .intro-body {
@@ -41,3 +56,7 @@
     color: #DBE9FF;
 }
 
+
+.noliststyle li {
+    list-style-type: none
+}

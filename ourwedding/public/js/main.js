@@ -18,6 +18,10 @@ $(function() {
     });
 });
 
+function loadImage() {
+    $('.intro-img').animate({ opacity: 1 }, { duration: 3000 });
+}
+
 // Closes the Responsive Menu on Menu Item Click
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
@@ -32,19 +36,19 @@ function init() {
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
-        zoom: 15,
+        zoom: 12,
 
         // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(40.6700, -73.9400), // New York
+        center: new google.maps.LatLng(-33.879063, 18.871633), // New York
 
         // Disables the default Google Maps UI components
-        disableDefaultUI: true,
-        scrollwheel: false,
-        draggable: false,
+        disableDefaultUI: false,
+        scrollwheel: true,
+        draggable: true,
 
         // How you would like to style the map. 
         // This is where you would paste any style found on Snazzy Maps.
-        styles: [{
+        /*styles: [{
             "featureType": "water",
             "elementType": "geometry",
             "stylers": [{
@@ -151,7 +155,7 @@ function init() {
             }, {
                 "weight": 1.2
             }]
-        }]
+        }]*/
     };
 
     // Get the HTML DOM element that will contain your map 
@@ -163,10 +167,9 @@ function init() {
 
     // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
     var image = 'img/map-marker.png';
-    var myLatLng = new google.maps.LatLng(40.6700, -73.9400);
+    var myLatLng = new google.maps.LatLng(-33.879063, 18.871633);
     var beachMarker = new google.maps.Marker({
         position: myLatLng,
-        map: map,
-        icon: image
+        map: map
     });
 }
