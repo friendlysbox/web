@@ -43,7 +43,7 @@ function init() {
 
         // Disables the default Google Maps UI components
         disableDefaultUI: false,
-        scrollwheel: true,
+        scrollwheel: false,
         draggable: true,
 
         // How you would like to style the map. 
@@ -172,4 +172,17 @@ function init() {
         position: myLatLng,
         map: map
     });
+
+    var contentString =
+        '<div class="googleMapInfo">'+
+        '<p style="font-family: Lora,\'Helvetica Neue\',Helvetica,Arial,sans-serif;"><a href="http://www.knorhoek.co.za/" target="_blank">Knorhoek Wine Estate</a></p>'+
+        '</div>';
+
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 400
+    });
+
+    infowindow.open(map,beachMarker)
+
 }
