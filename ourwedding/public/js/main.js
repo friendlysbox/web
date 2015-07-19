@@ -46,7 +46,7 @@ function init() {
         scrollwheel: false,
         draggable: true,
 
-        // How you would like to style the map. 
+        // How you would like to style the map.
         // This is where you would paste any style found on Snazzy Maps.
         /*styles: [{
             "featureType": "water",
@@ -158,7 +158,7 @@ function init() {
         }]*/
     };
 
-    // Get the HTML DOM element that will contain your map 
+    // Get the HTML DOM element that will contain your map
     // We are using a div with id="map" seen below in the <body>
     var mapElement = document.getElementById('map');
 
@@ -185,4 +185,46 @@ function init() {
 
     infowindow.open(map,beachMarker)
 
+}
+
+function submitForm() {
+    var formArray = $('#RSVPform').serializeArray(),
+        ajaxData = {
+            'name': '',
+            'coming': false,
+            'notes': ''
+        };
+
+    formArray.forEach(function(element){
+        switch(element.name) {
+            case 'name1':
+                ajaxData.name = ajaxData.name + element.value + ' ';
+                break;
+            case 'name2':
+                ajaxData.name = ajaxData.name + element.value + ' ';
+                break;
+            case 'rsvp':
+                if(element.value === 'yes') {
+                    ajaxData.coming = true;
+                } else if(element.value === 'no') {
+                    ajaxData.coming = false;
+                }
+                break;
+            case 'guestno':
+                ajaxData.notes = ajaxData.notes + 'guestno: ' + element.value + ' | ';
+                break;
+            case 'Other':
+                ajaxData.notes = ajaxData.notes + 'Other: ' + element.value;
+                break;
+        }
+    });
+
+    $.post(
+        '/guests',
+        ajaxData,
+        function( data ) {
+          console.log(data);
+        },
+        'json'
+    );
 }

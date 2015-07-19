@@ -90,14 +90,14 @@
                   Or contact us directly via our email address at: <a href="mailto:morneandtaytum@gmail.com">morneandtaytum@gmail.com</a>.<br>
                   This invitation extends to adults only.<br> RSVP by the <strong>20th of November 2015</strong>.
                 </p>
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" role="form" id="RSVPform">
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="name">Your names:</label>
                         <div class="col-sm-8">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Guest no.1">
+                            <input type="text" name="name1" class="form-control" id="name" placeholder="Guest no.1">
                         </div>
                         <div class="col-sm-offset-4 col-sm-8">
-                            <br><input type="text" name="name" class="form-control" id="name" placeholder="Guest no.2">
+                            <br><input type="text" name="name2" class="form-control" id="name" placeholder="Guest no.2">
                         </div>
                     </div>
                     <div class="form-group">
@@ -105,14 +105,14 @@
                         <div class="col-sm-3">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="rsvp" id="rsvp1" value="true"> Yes, wouldn't miss it for the world
+                                    <input type="radio" name="rsvp" id="rsvp1" value="yes"> Yes, wouldn't miss it for the world
                                 </label>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="rsvp" id="rsvp1" value="false"> No, but we'll toast from afar
+                                    <input type="radio" name="rsvp" id="rsvp2" value="no"> No, but we'll toast from afar
                                 </label>
                             </div>
                         </div>
@@ -122,14 +122,14 @@
                         <div class="col-sm-1">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="rsvp" id="rsvp1" value="true"> 1
+                                    <input type="radio" name="guestno" id="guestno1" value="1"> 1
                                 </label>
                             </div>
                         </div>
                         <div class="col-sm-1">
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="rsvp" id="rsvp1" value="false"> 2
+                                    <input type="radio" name="guestno" id="guestno2" value="2"> 2
                                 </label>
                             </div>
                         </div>
@@ -137,12 +137,12 @@
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="pwd">Anything else we should know?</label>
                         <div class="col-sm-8">
-                            <textarea class="form-control" rows="3" placeholder="eg. Allergies"></textarea>
+                            <textarea name="Other" class="form-control" rows="3" placeholder="eg. Allergies"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12">
-                            <button type="button" class="btn btn-default">Submit</button>
+                            <button type="button" class="btn btn-default" onclick="submitForm();">Submit</button>
                         </div>
                     </div>
                 </form>
