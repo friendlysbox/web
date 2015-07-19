@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport();
 
 var mongoose = require('mongoose');
 var Guests = require('../model/guests.js');
@@ -16,6 +18,12 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     Guests.create(req.body, function (err, post) {
         if (err) return next(err);
+        transporter.sendMail({
+            from: 'admin@friendlysbox.com',
+            to: 'friendly781114@gmail.com',
+            subject: 'Wedding submission',
+            text: JSON.stringify(post)
+        });
         res.json(post);
     });
 });
