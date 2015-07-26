@@ -88,3 +88,9 @@
 .intro-text {
     z-index: 10;
 }
+
+#Stage_jbeeb_3 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    opacity: 0;
+}

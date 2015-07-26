@@ -16,10 +16,57 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
+
+    startClock();
 });
 
 function loadImage() {
-    $('.intro-img').animate({ opacity: 1 }, { duration: 3000 });
+    $('.intro-img').animate(
+        { opacity: 1 },
+        3000,
+        function() {
+            $('#Stage_jbeeb_3').animate(
+                { opacity: 1 },
+                1000
+            );
+        }
+    );
+}
+
+function startClock(){
+    var myCountdown4 = new Countdown({
+                                        year: 2016,
+                                        month: 3,
+                                        day: 24,
+                                        width: 400,
+                                        height: 50,
+                                        target   : "clock",
+                                        rangeHi : 'month',
+                                        padding : 1.0,
+                                        hideLine : 1,
+                                        numbers		: 	{
+                                                        font 	: 'Lora,"Helvetica Neue",Helvetica,Arial,sans-serif',
+                                                        color	: "#FFFFFF",
+                                                        bkgd	: "#1E2747",
+                                                        fontSize : 200,
+                                                        rounded	: 0.15,				// percentage of size
+                                                        shadow	: {
+                                                                    x : 0,			// x offset (in pixels)
+                                                                    y : 3,			// y offset (in pixels)
+                                                                    s : 4,			// spread
+                                                                    c : "#1E2747",	// color
+                                                                    a : 0.4			// alpha	// <- no comma on last item!
+                                                                    }
+                                                        },
+
+                                        labels : {
+                                                    textScale : 1,
+                                                    offset : 5,
+                                                    color	: "#FFFFFF",
+                                                    font : 'Lora,"Helvetica Neue",Helvetica,Arial,sans-serif'
+                                                } // <- no comma on last item!
+
+                                        });
 }
 
 // Closes the Responsive Menu on Menu Item Click
@@ -45,117 +92,6 @@ function init() {
         disableDefaultUI: false,
         scrollwheel: false,
         draggable: true,
-
-        // How you would like to style the map.
-        // This is where you would paste any style found on Snazzy Maps.
-        /*styles: [{
-            "featureType": "water",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 17
-            }]
-        }, {
-            "featureType": "landscape",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 20
-            }]
-        }, {
-            "featureType": "road.highway",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 17
-            }]
-        }, {
-            "featureType": "road.highway",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 29
-            }, {
-                "weight": 0.2
-            }]
-        }, {
-            "featureType": "road.arterial",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 18
-            }]
-        }, {
-            "featureType": "road.local",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 16
-            }]
-        }, {
-            "featureType": "poi",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 21
-            }]
-        }, {
-            "elementType": "labels.text.stroke",
-            "stylers": [{
-                "visibility": "on"
-            }, {
-                "color": "#000000"
-            }, {
-                "lightness": 16
-            }]
-        }, {
-            "elementType": "labels.text.fill",
-            "stylers": [{
-                "saturation": 36
-            }, {
-                "color": "#000000"
-            }, {
-                "lightness": 40
-            }]
-        }, {
-            "elementType": "labels.icon",
-            "stylers": [{
-                "visibility": "off"
-            }]
-        }, {
-            "featureType": "transit",
-            "elementType": "geometry",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 19
-            }]
-        }, {
-            "featureType": "administrative",
-            "elementType": "geometry.fill",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 20
-            }]
-        }, {
-            "featureType": "administrative",
-            "elementType": "geometry.stroke",
-            "stylers": [{
-                "color": "#000000"
-            }, {
-                "lightness": 17
-            }, {
-                "weight": 1.2
-            }]
-        }]*/
     };
 
     // Get the HTML DOM element that will contain your map
@@ -223,7 +159,8 @@ function submitForm() {
         '/guests',
         ajaxData,
         function( data ) {
-          console.log(data);
+            alert('Thank you for letting us know!');
+            $('#RSVPform')[0].reset();
         },
         'json'
     );
