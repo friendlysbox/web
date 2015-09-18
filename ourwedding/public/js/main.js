@@ -16,11 +16,15 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
+    console.log(1);
+    $('#intro-img-tag').attr('src', 'img/mountainbackground.png');
 
+    console.log(2);
     startClock();
 });
 
 function loadImage() {
+console.log(3);
     $('.intro-img').animate(
         { opacity: 1 },
         3000,
